@@ -9,7 +9,7 @@ typedef struct {
 } Tx;
 
 typedef struct {
-    // uint8_t[32] prev_hash;
+    char* prev_hash_hex;
     uint16_t height;
     uint32_t timestamp;
     Tx tx;
