@@ -1,0 +1,5 @@
+amiga_packer/*
+amiga_build/*
+vasm/*
+vbcc/*
+vlink/*
