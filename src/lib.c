@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "lib.h"
 
 Block create_block(Block prev_block, Tx tx) {
@@ -26,4 +27,13 @@ Tx creates_tx(char* message) {
     tx.timestamp = 0;
     tx.message = message;
     return tx;
+}
+
+void print_block(const Block* block) {
+    printf("height: %d, block_timestamp: %d, tx_message: %s, tx_timestamp: %d",
+        block->height,
+        block->timestamp,
+        block->tx.message,
+        block->tx.timestamp
+    );
 }

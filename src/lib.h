@@ -19,4 +19,6 @@ Block create_block(Block prev_block, Tx tx);
 Tx creates_tx(char* message);
 Block create_genesis();
 
+void print_block(const Block* block);
+
 #endif
