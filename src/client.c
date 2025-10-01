@@ -3,6 +3,7 @@
 
 #include "parg.h"
 #include "lib.h"
+#include "encoding.h"
 
 int main(int argc, const char **argv)
 {
@@ -22,6 +23,14 @@ int main(int argc, const char **argv)
 			{
 				printf("Sending message '%s'\n", ps.optarg);
 				Tx tx = creates_tx(ps.optarg);
+
+				// uint32_t bytes_size = tx_bytes_len(&tx);
+				// uint8_t* bytes = (uint8_t*) malloc(bytes_size);
+				// tx_to_bytes(&tx, bytes);
+
+				// tx = tx_from_bytes(bytes);
+
+
 				Block block = create_block(&chain.b, &tx);
 				chain = add_block(&chain, block);
 				// print_block(find_block(&chain, 0));

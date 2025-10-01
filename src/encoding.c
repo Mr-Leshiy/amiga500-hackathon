@@ -20,8 +20,15 @@ void to_le_bytes(uint32_t v, uint8_t* buf) {
 }
 
 void tx_to_bytes(const Tx* tx, uint8_t* buf) {
-    memcpy(buf, tx->message, strlen(tx->message));
-    to_le_bytes(tx->timestamp, buf + strlen(tx->message));
+    to_le_bytes(tx->timestamp, buf);
+    strcpy(buf + 4, tx->message);
+}
+
+Tx tx_from_bytes(uint8_t* buf) {
+    Tx tx;
+    tx.message = buf + 4;
+    tx.timestamp = ((uint32_t) buf[0]) + ((uint32_t) buf[1]) << 8 + ((uint32_t) buf[2]) << 16 + ((uint32_t) buf[3]) << 24;
+    return tx;
 }
 
 void block_to_bytes(const Block* block, uint8_t* buf) {
