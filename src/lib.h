@@ -15,9 +15,19 @@ typedef struct {
     Tx tx;
 } Block;
 
+struct BlockChain;
+
+struct BlockChain {
+    Block b;
+    struct BlockChain* prev;
+};
+
 Block create_block(const Block* prev_block, const Tx* tx);
 Tx creates_tx(char* message);
 Block create_genesis();
+
+struct BlockChain add_block(struct BlockChain* chain, Block block);
+Block* find_block(const struct BlockChain* chain, uint32_t height);
 
 void print_block(const Block* block);
 

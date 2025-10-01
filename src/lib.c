@@ -39,6 +39,30 @@ Tx creates_tx(char* message) {
     return tx;
 }
 
+struct BlockChain add_block(struct BlockChain* chain, Block block) {
+    // struct BlockChain* new_head = (struct BlockChain *) malloc(sizeof(struct BlockChain));
+    struct BlockChain new_head;
+    new_head.b = block;
+    new_head.prev = chain;
+
+    print_block(&new_head.b);
+    return new_head;
+}
+
+Block* find_block(const struct BlockChain* chain, uint32_t height) {
+    const struct BlockChain* walk = chain;
+
+    while(walk) {
+        printf("%d\n", walk->b.height);
+        if(walk->b.height == height) {
+            return &walk->b;
+        }
+        walk = walk->prev;
+    }
+
+    return &chain->b;
+}
+
 void print_block(const Block* block) {
     printf("height: %d, block_timestamp: %d, tx_message: %s, tx_timestamp: %d, prev_hash: %s \n",
         block->height,
