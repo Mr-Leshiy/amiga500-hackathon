@@ -40,6 +40,8 @@ struct sha256_buff {
     uint8_t chunk_size;
 };
 
+void bin_to_hex(const void* data, uint32_t len, char* out);
+
 /* Initialization, must be called before any further use */
 void sha256_init(struct sha256_buff* buff);
 

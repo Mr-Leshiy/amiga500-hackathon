@@ -151,7 +151,7 @@ void sha256_read(const struct sha256_buff* buff, uint8_t* hash) {
     }
 }
 
-static void bin_to_hex(const void* data, uint32_t len, char* out) {
+void bin_to_hex(const void* data, uint32_t len, char* out) {
     static const char* const lut = "0123456789abcdef";
     uint32_t i;
     for (i = 0; i < len; ++i){
